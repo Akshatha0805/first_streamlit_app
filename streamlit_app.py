@@ -56,7 +56,7 @@ streamlit.dataframe(my_data_rows)
 
 
 def insert_row_snowflake(new_fruit):
-    with my_cnx.cursor() as my cur:
+    with my_cnx.cursor() as my_cur:
          my_cur.execute("insert into fruit_load_list values ('from_streamlit')")
          return "thanks for adding" + new_fruit
 
