@@ -11,9 +11,6 @@ streamlit.text('Omega 3 & Blueberry Oatmeal')
 streamlit.text('Kale, Spinach & Rocket Smoothie')
 streamlit.text('Hard-Boiled Free-Range Egg')
 
-
-
-
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
@@ -46,16 +43,13 @@ except URLError as e:
   
   
 # streamlit.stop()
-
-
-# my_cur = my_cnx.cursor()
-
 # streamlit.header("The fruit load list contains:")
-# streamlit.dataframe(my_data_rows)
+
 streamlit.header('View our fruit list.Add your favourites!')
 if streamlit.button('Get fruit list'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    my_cur.execute("select * from my_fruit_list")
+    my_cur.execute("select * from fruit_load_list")
+    my_cur = my_cnx.cursor()
     my_data_rows = my_cur.fetchall()
     my_data_rows = get_fruit_load_list()
     my_cnx.close()
