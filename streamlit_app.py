@@ -45,7 +45,7 @@ except URLError as e:
     streamlit.error()
   
   
-streamlit.stop()
+# streamlit.stop()
 
 
 my_cur = my_cnx.cursor()
